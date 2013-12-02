@@ -1,0 +1,52 @@
+@import url(../../../components/bootstrap/dist/css/bootstrap.css);
+/* line 3, ../../lib/client/sass/_twitter.scss */
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  color: #b94a48;
+  border-color: #ee5f5b;
+}
+
+/* line 9, ../../lib/client/sass/_twitter.scss */
+input:focus:invalid:focus,
+textarea:focus:invalid:focus,
+select:focus:invalid:focus {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
+}
+
+/* line 16, ../../lib/client/sass/_twitter.scss */
+.alert.alert-danger {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 8, ../../lib/client/sass/main.scss */
+body {
+  border-top: 0.4rem solid #d11818;
+  background: #f8f7f7;
+}
+
+/* line 13, ../../lib/client/sass/main.scss */
+.jumbotron {
+  background: #f8f7f7;
+  margin-bottom: 0px;
+}
+
+/* line 18, ../../lib/client/sass/main.scss */
+.black-border-top {
+  border-top: 3rem solid #252525;
+}
+
+/* line 22, ../../lib/client/sass/main.scss */
+.black-box {
+  background: #252525;
+  min-height: 400px;
+}
+
+/* line 27, ../../lib/client/sass/main.scss */
+.row {
+  margin-top: 10px;
+}

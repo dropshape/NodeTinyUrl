@@ -2,6 +2,7 @@
   "name": "node-tiny-url",
   "description": "node-tiny-url",
   "version": "0.0.1",
+  "output-dir": "public",
   "author": {
     "name": "DropShape",
     "email": "admin AT dropshape.com"
@@ -26,7 +27,7 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "convict": "~0.4.1",
-    "express": "~3.4.5",
+    "express": "~3.4.0",
     "q": "~0.9.7",
     "async": "~0.2.9",
     "lodash": "~2.4.0",
@@ -36,13 +37,17 @@
     "grunt-shell": "~0.6.1",
     "node-di": "0.0.2",
     "mongoose-url-shortener": "https://github.com/dropshape/mongooseurlshortener/archive/master.tar.gz",
-    "node-api-message": "https://github.com/dropshape/nodeapimessage/archive/master.tar.gz"
+    "node-api-message": "https://github.com/dropshape/nodeapimessage/archive/master.tar.gz",
+    "ejs": "~0.8.5"
   },
   "devDependencies": {
     "grunt": "0.4.1",
     "jasmine-node": "https://github.com/mccormicka/jasmine-node/archive/exclusive-tests.tar.gz",
     "grunt-contrib-watch": "0.3.1",
     "grunt-contrib-jshint": "0.4.3",
-    "grunt-jasmine-node": "~0.1.0"
+    "grunt-jasmine-node": "~0.1.0",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-symlink": "~0.2.0",
+    "grunt-contrib-copy": "~0.4.1"
   }
 }

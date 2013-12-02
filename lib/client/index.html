@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+    HI! Thanks for checking out our code.
+-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--<title><%= typeof(title) !== 'undefined' ? title : 'TITLE GOES HERE' %></title>-->
+    <!--<meta name="<%= typeof(description) !== 'undefined' ? description : 'DESCRIPTION GOES HERE' %>" content="">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="/vendor/modernizr.min.js"></script>
+    <!--<script>-->
+    <!--document.write('<base href="' + document.location + '" />');-->
+    <!--</script>-->
+</head>
+<body>
+
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
+    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
+    experience this site.</p>
+<![endif]-->
+
+<!-- Main container class -->
+<div class="navbar-wrapper black-border-top">
+    <div git-fork></div>
+    <div tiny-url-title></div>
+    <div class="navbar-wrapper black-box"></div>
+</div>
+
+<!-- build:js scripts/amd-app.js -->
+<script src="require.config.js"></script>
+<script data-main="js/main.js" src="vendor/require.min.js"></script>
+<!-- endbuild -->
+</body>
+
+</html>

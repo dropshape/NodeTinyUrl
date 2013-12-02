@@ -1,0 +1,29 @@
+//Import TwitterBootstrap for easy styling
+@import '../../../components/bootstrap/dist/css/bootstrap.css';
+@import './twitter';
+//@import './bootstrap/css/bootstrap';
+
+$background-color: #F8F7F7;
+$black-color: #252525;
+body {
+    border-top: 0.4rem solid #d11818;
+    background: $background-color
+}
+
+.jumbotron {
+    background: $background-color;
+    margin-bottom: 0px;
+}
+
+.black-border-top {
+    border-top: 3.0rem solid $black-color;
+}
+
+.black-box {
+    background: $black-color;
+    min-height: 400px;
+}
+
+.row {
+    margin-top: 10px;
+}

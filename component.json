@@ -1,0 +1,17 @@
+{
+  "name": "NodeTinyUrl",
+  "version": "0.0.0",
+  "main": "/lib/client/index.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.2",
+    "requirejs": "~2.1.9",
+    "jquery": "~2.0.3",
+    "angular": "~1.2.3",
+    "text": "~2.0.10"
+  }
+}

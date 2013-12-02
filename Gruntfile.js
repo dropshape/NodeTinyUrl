@@ -1,17 +1,24 @@
 module.exports = function (grunt) {
     'use strict';
 
-    //Get Database configuration.
-    var database = require('./lib/config/config').get('database');
+    //Get configuration.
+    var config = require('./lib/config/config');
+    var database = config.get('database');
+    var outputDir = config.get('staticFolder');
+
+
+    //Default task runs tests, jshint and watches for changes.
+    grunt.registerTask('default',
+        ['jasmine_node', 'jshint', 'css', 'symlink', 'watch']);
 
     //Database migrations
     grunt.registerTask('database', ['shell:databaseUp']);
     grunt.registerTask('database:down', ['shell:databaseDown']);
     grunt.registerTask('database:drop', ['shell:databaseDrop']);
 
-    //Default task runs tests, jshint and watches for changes.
-    grunt.registerTask('default',
-        ['jasmine_node', 'jshint', 'watch']);
+    //CSS
+    grunt.registerTask('css', ['compass:dev']);
+    grunt.registerTask('css:dist', ['compass:dist']);
 
     //Just run tests
     grunt.registerTask('test', 'jasmine_node');
@@ -37,13 +44,13 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            files: { src: ['index.js','lib/**/*.js', 'test/**/*.js']}
+            files: { src: ['index.js','lib/**/*.js', 'test/**/*.js', '!lib/client/vendor/**/*.js']}
         },
 
         //Files to watch and actions to take when they are changed.
         watch: {
-            files: ['index.js','lib/**/*.js', 'test/**/*.spec.js'],
-            tasks: ['jshint', 'jasmine_node']
+            files: ['index.js','lib/client/*.js', 'test/**/*.spec.js'],
+            tasks: [ 'css', 'jshint', 'jasmine_node']
         },
         shell: {
             start:{
@@ -73,6 +80,64 @@ module.exports = function (grunt) {
                     ' -migrations ' + database.migrations +
                     ' down'
             }
+        },
+
+
+        //Compile stylesheets
+        compass: {
+            options: {
+                cssDir: outputDir + '/styles',
+                sassDir: 'lib/client/sass',
+                imagesDir: 'lib/client/sprites',
+                generatedImagesDir: outputDir + '/images/sprites',
+                httpGeneratedImagesPath: '/images/sprites'
+            },
+            dev: {
+                options: {
+                    outputStyle: 'expanded'
+                }
+            },
+            dist: {
+                options: {
+                    outputStyle: 'compressed'
+                }
+            }
+        },
+
+        //In Development mode simply symlink files to the output directory
+        symlink: {
+            expanded: {
+                files: [
+                    {
+                        expand: true,
+                        src: [
+                            'components'
+                        ],
+                        dest: outputDir
+                    }
+                ]
+            },
+            explicit: {
+                files: [
+                    {
+                        src: 'lib/**/index.html',
+                        dest: outputDir + '/index.html'
+                    },
+                    {
+                        src:'lib/client/require.config.js',
+                        dest: outputDir + '/require.config.js'
+                    },
+                    {
+                        src:'lib/client/vendor',
+                        dest: outputDir + '/vendor'
+                    },
+                    {
+                        src:'lib/client/js',
+                        dest: outputDir + '/js'
+                    }
+                ]
+
+            }
         }
     });
 
@@ -85,4 +150,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     //Runs shell scripts
     grunt.loadNpmTasks('grunt-shell');
+    //CSS compass compiler
+    grunt.loadNpmTasks('grunt-contrib-compass');
+
+    //Copy files tasks.
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-symlink');
 };

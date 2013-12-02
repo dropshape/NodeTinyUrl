@@ -1,0 +1,21 @@
+<form role="form" name="shortenForm" novalidate>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <input name="urlInput"
+                   ng-model="shortUrl"
+                   required
+                   class="form-control"
+                   placeholder="Enter a url: for example www.drpsh.com">
+            <p class="alert alert-danger" ng-show="text.error" ng-bind="text.error"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <a class="btn btn-primary btn-block" id="url-submit" ng-click="shortenUrl()">
+                <i></i>
+                <span class="">See Results</span>
+            </a>
+        </div>
+    </div>
+
+</form>
