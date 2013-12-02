@@ -57,3 +57,9 @@ body {
   height: 300px;
   border-style: 3px solid red;
 }
+
+/* line 37, ../../lib/client/sass/main.scss */
+.bar-chart-title {
+  color: white;
+  padding: 10px;
+}

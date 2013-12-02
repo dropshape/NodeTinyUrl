@@ -24,7 +24,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="/styles/main.css">
-    <script src="/vendor/modernizr.min.js"></script>
+    <!--<script src="/vendor/modernizr.min.js"></script>-->
     <!--<script>-->
     <!--document.write('<base href="' + document.location + '" />');-->
     <!--</script>-->
@@ -42,7 +42,13 @@
     <div git-fork></div>
     <div tiny-url-title></div>
     <div class="navbar-wrapper black-box" ng-controller="mainController">
-        <div d3-bar-chart class="chart" data="topLinks" label="url" data-point="totalHits"></div>
+        <div d3-bar-chart
+             class="chart"
+             data="topLinks"
+             title="Top 10 Links"
+             label="url"
+             data-point="totalHits">
+        </div>
     </div>
 </div>
 
