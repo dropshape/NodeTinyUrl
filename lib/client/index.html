@@ -41,7 +41,9 @@
 <div class="navbar-wrapper black-border-top">
     <div git-fork></div>
     <div tiny-url-title></div>
-    <div class="navbar-wrapper black-box"></div>
+    <div class="navbar-wrapper black-box" ng-controller="mainController">
+        <div d3-bar-chart class="chart" data="topLinks" label="url" data-point="totalHits"></div>
+    </div>
 </div>
 
 <!-- build:js scripts/amd-app.js -->

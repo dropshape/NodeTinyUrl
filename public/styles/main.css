@@ -50,3 +50,10 @@ body {
 .row {
   margin-top: 10px;
 }
+
+/* line 31, ../../lib/client/sass/main.scss */
+.chart {
+  width: 400px;
+  height: 300px;
+  border-style: 3px solid red;
+}
