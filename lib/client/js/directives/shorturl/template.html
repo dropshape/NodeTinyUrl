@@ -1,6 +1,6 @@
 <form role="form" name="shortenForm" novalidate>
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
             <input name="urlInput"
                    ng-model="shortUrl"
                    required
@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
             <a class="btn btn-primary btn-block" id="url-submit" ng-click="shortenUrl()">
                 <i></i>
                 <span class="">Create Short URL</span>
@@ -19,20 +19,16 @@
     </div>
 
     <div class="row" ng-show="text.shortUrl">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="alert alert-success" ng-bind-html="text.shortUrl"></div>
         </div>
     </div>
     <div class="row" ng-show="text.shortUrl">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
             <a class="btn btn-primary btn-block" id="twitter-submit" ng-click="shareUrl()">
                 <i></i>
                 <span class="">Share link on Twitter</span>
             </a>
         </div>
     </div>
-
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="devapitestac">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
 </form>
