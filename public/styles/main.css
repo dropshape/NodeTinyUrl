@@ -18,9 +18,11 @@ select:focus:invalid:focus {
 }
 
 /* line 16, ../../lib/client/sass/_twitter.scss */
-.alert.alert-danger {
+.alert {
   margin-top: 10px;
   margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* line 8, ../../lib/client/sass/main.scss */

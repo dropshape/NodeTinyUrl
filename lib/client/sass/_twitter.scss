@@ -13,7 +13,9 @@ select:focus:invalid:focus {
     box-shadow: 0 0 6px #f8b9b7;
 }
 
-.alert.alert-danger {
+.alert {
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
