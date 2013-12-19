@@ -1,5 +1,5 @@
 node_modules/
 components/
 *.log
-.DS_Storei
+.DS_Store
 .sass-cache/
