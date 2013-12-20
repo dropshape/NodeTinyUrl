@@ -6,10 +6,9 @@ module.exports = function (grunt) {
     var database = config.get('database');
     var outputDir = config.get('staticFolder');
 
-
     //Default task runs tests, jshint and watches for changes.
     grunt.registerTask('default',
-        ['jasmine_node', 'jshint', 'css', 'symlink', 'watch']);
+        ['jasmine_node', 'jshint', 'css', 'symlink', 'ngconstant:dev', 'watch']);
 
     //Database migrations
     grunt.registerTask('database', ['shell:databaseUp']);
@@ -44,21 +43,22 @@ module.exports = function (grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            files: { src: ['index.js','lib/**/*.js', 'test/**/*.js', '!lib/client/vendor/**/*.js']}
+            files: { src: ['index.js', 'lib/**/*.js', 'test/**/*.js', '!lib/client/vendor/**/*.js']}
         },
 
         //Files to watch and actions to take when they are changed.
         watch: {
-            files: ['index.js','lib/client/*.js', 'test/**/*.spec.js'],
+            files: ['index.js', 'lib/client/*.js', 'test/**/*.spec.js'],
             tasks: [ 'css', 'jshint', 'jasmine_node']
         },
+
         shell: {
-            start:{
-                command:'node index'
+            start: {
+                command: 'node index'
             },
 
-            databaseDrop:{
-                command:'./node_modules/mongoosemigrate/bin/mongoose-migrate' +
+            databaseDrop: {
+                command: './node_modules/mongoosemigrate/bin/mongoose-migrate' +
                     ' -db ' + database.db +
                     ' -host ' + database.host +
                     ' -drop'
@@ -81,7 +81,6 @@ module.exports = function (grunt) {
                     ' down'
             }
         },
-
 
         //Compile stylesheets
         compass: {
@@ -124,19 +123,44 @@ module.exports = function (grunt) {
                         dest: outputDir + '/index.html'
                     },
                     {
-                        src:'lib/client/require.config.js',
+                        src: 'lib/client/require.config.js',
                         dest: outputDir + '/require.config.js'
                     },
                     {
-                        src:'lib/client/vendor',
+                        src: 'lib/client/vendor',
                         dest: outputDir + '/vendor'
                     },
                     {
-                        src:'lib/client/js',
+                        src: 'lib/client/js',
                         dest: outputDir + '/js'
                     }
                 ]
 
+            }
+        },
+
+        //Angular Constants
+        ngconstant: {
+            options: {
+                templatePath:'angular-config.tpl.ejs'
+            },
+            dev: {
+                dest: outputDir + '/js/config.js',
+                name: 'configModule',
+                constants: {
+                    'shareEndpoint': '/twitter/share',
+                    'via': 'dropshape',
+                    'shareText': 'Check out this post '
+                }
+            },
+            dist: {
+                dest: outputDir + '/js/config.js',
+                name: 'configModule',
+                constants: {
+                    'shareEndpoint': '/twitter/share',
+                    'via': 'dropshape',
+                    'shareText': 'Check out this post '
+                }
             }
         }
     });
@@ -156,4 +180,7 @@ module.exports = function (grunt) {
     //Copy files tasks.
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-symlink');
+
+    //Client side configurtion variables.
+    grunt.loadNpmTasks('grunt-ng-constant');
 };
