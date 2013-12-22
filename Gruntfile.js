@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         ['jasmine_node', 'jshint', 'css', 'symlink', 'ngconstant:dev', 'watch']);
 
     grunt.registerTask('prod',
-        [ 'database', 'css','ngconstant:dist', 'symlink', 'shell:start']);
+        [ 'database', 'css','ngconstant:dist', 'symlink']);
 
     //Database migrations
     grunt.registerTask('database', ['shell:databaseUp']);

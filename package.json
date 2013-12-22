@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "scripts": {
-    "start": "./forever.js",
+    "start": "( grunt database | node index.js | node_modules/bunyan/bin/bunyan )",
     "test": "./node_modules/jasmine-node/bin/jasmine-node test/ --verbose --color --captureExceptions"
   },
   "main": "index",

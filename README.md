@@ -138,3 +138,4 @@ reload the application whilst removing the 3001 port number. It should still loa
 
 sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3001
 
+NODE_ENV=production forever start -l forever.log -a -o out.log -e err.log index.js
