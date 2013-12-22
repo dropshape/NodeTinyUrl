@@ -1,4 +1,4 @@
-@import url(../../../components/bootstrap/dist/css/bootstrap.css);
+@import url(./bootstrap.css);
 /* line 3, ../../lib/client/sass/_twitter.scss */
 input:focus:invalid,
 textarea:focus:invalid,

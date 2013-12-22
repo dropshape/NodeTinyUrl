@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
     'use strict';
 
+    var path = require('path');
     //Get configuration.
     var config = require('./lib/config/config');
     var database = config.get('database');
@@ -9,6 +10,9 @@ module.exports = function (grunt) {
     //Default task runs tests, jshint and watches for changes.
     grunt.registerTask('default',
         ['jasmine_node', 'jshint', 'css', 'symlink', 'ngconstant:dev', 'watch']);
+
+    grunt.registerTask('prod',
+        [ 'database', 'css','ngconstant:dist', 'symlink', 'shell:start']);
 
     //Database migrations
     grunt.registerTask('database', ['shell:databaseUp']);
@@ -54,7 +58,7 @@ module.exports = function (grunt) {
 
         shell: {
             start: {
-                command: 'node index'
+                command: 'npm start'
             },
 
             databaseDrop: {
@@ -133,6 +137,10 @@ module.exports = function (grunt) {
                     {
                         src: 'lib/client/js',
                         dest: outputDir + '/js'
+                    },
+                    {
+                        src:'components/bootstrap/dist/css/bootstrap.css',
+                        dest: outputDir + '/styles/bootstrap.css'
                     }
                 ]
 
@@ -145,7 +153,7 @@ module.exports = function (grunt) {
                 templatePath:'angular-config.tpl.ejs'
             },
             dev: {
-                dest: outputDir + '/js/config.js',
+                dest: 'lib/client/js/config.js',
                 name: 'configModule',
                 constants: {
                     'shareEndpoint': '/twitter/share',
@@ -154,7 +162,7 @@ module.exports = function (grunt) {
                 }
             },
             dist: {
-                dest: outputDir + '/js/config.js',
+                dest: 'lib/client/js/config.js',
                 name: 'configModule',
                 constants: {
                     'shareEndpoint': '/twitter/share',
