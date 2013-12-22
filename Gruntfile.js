@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         src: [
-                            'components'
+                            'bower_components'
                         ],
                         dest: outputDir
                     }
@@ -137,10 +137,6 @@ module.exports = function (grunt) {
                     {
                         src: 'lib/client/js',
                         dest: outputDir + '/js'
-                    },
-                    {
-                        src:'components/bootstrap/dist/css/bootstrap.css',
-                        dest: outputDir + '/styles/bootstrap.css'
                     }
                 ]
 

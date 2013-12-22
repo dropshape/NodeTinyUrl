@@ -5,7 +5,8 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
+    "components",
+    "bower_components"
   ],
   "dependencies": {
     "bootstrap": "~3.0.2",
