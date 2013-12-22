@@ -1,3 +1,5 @@
+http://www.drpsh.com/
+
 1. Create Security Group drpsh_db
 1. Open port 22
 1. Create Security Group drpsh_app
@@ -99,6 +101,8 @@ git checkout -f
 cd /home/ec2-user/app
 npm install
 bower install
+forever stop index.js
+forever start -l forever.log -o out.log -e err.log NODE_ENV=production grunt prod --verbose &
 killall node
 NODE_ENV=production grunt prod -verbose &
 
