@@ -135,10 +135,19 @@ reload the config
 sudo sysctl -p /etc/sysctl.conf
 
 reload the application whilst removing the 3001 port number. It should still load.
+Stop the instance and add the following to the user data section
+sudo iptables -t nat -L
 
+#!/bin/sh
 sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3001
+
 
 NODE_ENV=production forever start -l forever.log -a -o out.log -e err.log index.js
 
 sudo npm install pm2 -g
 NODE_ENV=production pm2 start index.js -i max -e err.log -o out.log
+
+sudo vim /etc/init.d/startup
+
+sudo chmod +x /etc/init.d/startup
+sudo chkconfig startup on

@@ -1,0 +1,21 @@
+#!/bin/bash
+# chkconfig: 2345  98 20
+# description: Startup script for the application
+# Sets up ip forwarding so we do not need a load balancer
+# Copy this file into:
+# sudo vim /etc/init.d/startup
+# Run the following commands
+# sudo chmod +x /etc/init.d/startup
+# sudo chkconfig startup on
+#
+# processname: startup
+
+set -x
+exec > /home/ec2-user/app/Error.log 2>&1
+
+iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3001
+
+cd /home/ec2-user/app/
+PM2=/usr/local/bin/pm2
+
+HOME=/home/ec2-user/ NODE_ENV=production $PM2 start index.js -i max -e Error.log -o Debug.log
