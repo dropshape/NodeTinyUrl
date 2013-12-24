@@ -1,0 +1,12 @@
+#!/bin/sh
+# Post receive hook for git
+# vim repo/hooks/post-receive
+echo "--Deploying Application to /home/ec2-user/app--"
+GIT_WORK_TREE=/home/ec2-user/app
+export GIT_WORK_TREE
+git checkout -f
+cd /home/ec2-user/app
+npm install
+bower install
+NODE_ENV=production grunt prod &
+pm2 restart all
