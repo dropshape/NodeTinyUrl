@@ -1,6 +1,6 @@
-##node-tiny-url
+## node-tiny-url
 
-Please Share on Twitter if you like #NodeTinyUrl
+Please Share on Twitter if you like __NodeTinyUrl__
 
 <a href="https://twitter.com/intent/tweet?hashtags=NodeTinyUrl&amp;&amp;text=Check%20out%20this%20repo%20on%20github&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fgithub.com%2Fdropshape&amp;via=dropshape" style="float:right">
 <img src="https://raw.github.com/dropshape/NodeTinyUrl/master/twittershare.png">
@@ -8,7 +8,7 @@ Please Share on Twitter if you like #NodeTinyUrl
 
 see the live demo at [drpsh.com](http://drpsh.com/QD6U8uM3_) 
 
-###description
+### Description
 **node-tiny-url** is a NodeJS implementation of a URL shortening service similar to  [bit.ly](http://drpsh.com/QcDH5KdKR) or [tinyurl](http://drpsh.com/QE9-m02K_). node-tiny-url uses a [MEAN](http://drpsh.com/4DEzChU3-) stack to achieve this. 
 
  [MongoDB](http://drpsh.com/sD5Zt023R)
@@ -19,7 +19,7 @@ see the live demo at [drpsh.com](http://drpsh.com/QD6U8uM3_)
 And a few other cool tools as well like: 
 [RequireJs](http://drpsh.com/acKuGEdKi), [Amazon Web Services](http://drpsh.com/aEYpUGd0Z) and [D3JS](http://drpsh.com/4DXnbaWC-)
 
-###Local Installation
+### Local Installation
 ```   
     //Clone the repo
     git clone https://github.com/dropshape/NodeTinyUrl
@@ -35,18 +35,18 @@ And a few other cool tools as well like:
 ``` 
 visit localhost:3001 in your browser to see your very own version of node-tiny-url.
 
-###Installing on AWS:
-####Architecture Overview
+### Installing on AWS:
+#### Architecture Overview
 We are going to separate our application out into 2 layers the DB Layer and the Application Layer. This means that we can scale either one up independently as needed if our applications requires it. Furthermore we will be using security groups to make sure that only our application server can talk to our DB instances. We will be using [Route 53](http://drpsh.com/sD7Exhi0_) as the DNS for the application so we will also need an Elastic IP so that we can restart our Application Server and not lose our Route 53 configuration. We wont be using a Load Balancer for this installation as we only have one Application Server and the extra cost is not justifiable until you have at least two Application servers therefore we will need to do some extra work to setup ip forwarding on startup.
 
-####Security Groups
+#### Security Groups
 We need two security groups for our application so that we can run the MongoDB and the Application servers on separate EC2 instances and still allow them to talk to each other.
 
 1. Create a App Security Group and expose port 80(http) and port 22(ssh)
 1. Create a DB Security Group and expose port 22(ssh)
 1. Within your DB Security Group create a custom TCP rule and set it's source to your App Security Group and expose the MongoDB port (27017) this will allow only our application access to the MongoDB EC2 Instance.
 
-###Install MongoDB
+### Install MongoDB
 * Launch a new EC2 Instance and make sure you associate it with the DB Security Group created earlier.
 * Download your Security Key and then SSH Into your EC2 Instance.
 ```js
@@ -96,7 +96,7 @@ sudo /etc/init.d/mongod start
 ```
 You should now have a working copy of MongoDB
 
-###Installing the Application
+### Installing the Application
 * Launch another EC2 Instance and associate it with the Application Security group you created earlier.
 * SSH into the new machine using your downloaded keys
 ```
@@ -244,7 +244,7 @@ You can test that ip-forwarding has been setup correctly by running the followin
 ```
 sudo iptables -t nat -L
 ```
-####Deploy
+#### Deploy
 
 Finally push your local git repo.
 
@@ -289,14 +289,14 @@ You should see a successful push and pm2 kick off a restart of the application.
 
 * Finally visit your EC2 instance in the browser!
 
-###Contributing
+### Contributing
 1. Fork the git repository
 1. Add some awesome code
 1. Add some awesome tests
 1. Run the tests and jshint using the grunt command
 1. Create a Pull Request
 
-Please Share on Twitter if you like #NodeTinyUrl
+Please Share on Twitter if you like __NodeTinyUrl__
 
 <a href="https://twitter.com/intent/tweet?hashtags=NodeTinyUrl&amp;&amp;text=Check%20out%20this%20repo%20on%20github&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fgithub.com%2Fdropshape&amp;via=dropshape" style="float:right">
 <img src="https://raw.github.com/dropshape/NodeTinyUrl/master/twittershare.png">
